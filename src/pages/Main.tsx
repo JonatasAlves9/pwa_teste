@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {FlatList, View, Image, Text, StyleSheet} from 'react-native';
+import {FlatList, View, Image, Text, StyleSheet, Button} from 'react-native';
 
 interface Member {
   login: string,
@@ -10,6 +10,7 @@ interface Member {
 const Main: React.FC = () => {
 const [members, setMembers] = useState<Member[]>([]);
 
+
    useEffect(() => {
      fetch('https://api.github.com/orgs/rocketseat/members').then(response => {
        response.json().then(data => {
@@ -19,6 +20,7 @@ const [members, setMembers] = useState<Member[]>([]);
    }, []);
 
   return (
+    <>
     <FlatList 
     contentContainerStyle={{padding: 24}}
     data={members}
@@ -33,7 +35,8 @@ const [members, setMembers] = useState<Member[]>([]);
       </View>
     )}
     />
-      
+    <Button onPress={() => {}} title={"Instalar"}/>
+      </>
     )
 }
 
